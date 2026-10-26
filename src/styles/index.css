@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "SF Pro Text", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-tag: var(--tag);
+  --color-tag-line: var(--tag-line);
+  --color-tag-fg: var(--tag-fg);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+}
+
+:root {
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --elevated: #efeff2;
+  --line: #e3e4e8;
+  --fg: #0d0e11;
+  --muted: #62666f;
+  --subtle: #8b8f98;
+  --accent: #4f52e6;
+  --accent-fg: #ffffff;
+  --primary: #0d0e11;
+  --primary-fg: #f7f7f8;
+  --tag: #eef0ff;
+  --tag-line: #c9cdff;
+  --tag-fg: #3a3dc4;
+  --glow: 79 82 230;
+  --ok: #0f9d6b;
+  --warn: #b7791f;
+  --danger: #d6334f;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #08090c;
+  --surface: #0d0f12;
+  --elevated: #15171c;
+  --line: #1c1f26;
+  --fg: #f1f1f4;
+  --muted: #9a9daa;
+  --subtle: #6f7380;
+  --accent: #8189ff;
+  --accent-fg: #08090c;
+  --primary: #e5e5e6;
+  --primary-fg: #08090a;
+  --tag: #14163a;
+  --tag-line: #2f3480;
+  --tag-fg: #c3c7ff;
+  --glow: 64 82 210;
+  --ok: #45e0a8;
+  --warn: #f0b85a;
+  --danger: #ff6b81;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.card-enter {
+  animation: card-in 180ms ease-out;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--elevated) 25%, var(--line) 37%, var(--elevated) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.032em;
+}
+
+.display {
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 0.99;
+}
+
+.dots {
+  background-image: radial-gradient(rgb(var(--glow) / 0.55) 1px, transparent 1.2px);
+  background-size: 9px 9px;
+}
+
+.glow-top {
+  background:
+    radial-gradient(70% 60% at 50% 0%, rgb(var(--glow) / 0.28), transparent 70%),
+    radial-gradient(35% 40% at 85% 10%, rgb(var(--glow) / 0.18), transparent 70%);
+}
+
+.glow-band {
+  background: radial-gradient(60% 120% at 50% 100%, rgb(var(--glow) / 0.45), transparent 70%);
+}
+
+.glow-bottom {
+  background: linear-gradient(to top, rgb(var(--glow) / 0.55), transparent 70%);
+}
+
+.hatch {
+  background-image: repeating-linear-gradient(135deg, var(--line) 0 1px, transparent 1px 11px);
+}
+
+.mask-fade-y {
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+}
+
+.mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+
+.dashed-x {
+  background-image: linear-gradient(to right, var(--line) 50%, transparent 50%);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
